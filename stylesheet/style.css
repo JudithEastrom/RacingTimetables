@@ -1,0 +1,23 @@
+/* font import*/
+
+@font-face {
+    font-family:"AZNUnified-Oblique";
+    src: url("/assets/fonts/AZNUnified-Oblique-Trial.otf");
+
+}
+body{
+    font-family: Roboto;
+}
+
+/*table */
+#racing-timetable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#racing-timetable th {
+  text-align: left;
+}
+
+#racing-timetable td input[type="text"] {
+  width: 100%;
+}

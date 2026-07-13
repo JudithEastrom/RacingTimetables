@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet/style.css">
+    <style>@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+</style>
+    <title>Racing Timetable</title>
+</head>
+<body>
+    <table id="racing-timetable"> 
+        <tr>
+            <th>Driver</th>
+            <th>SS1</th>
+            <th>Position</th>
+            <th>End time</th>
+        </tr>
+        <tr> 
+            <td><input type="text" id="driver-name" placeholder="Driver Name"></td> 
+           <td><input type="text" class="ss" placeholder="m:ss.mmm"></td>
+            <td><input type="number" id="position" readonly></td>
+            <td class="end-time">0</td>
+        </tr>
+    </table>
+    <button id="add-row">Add Row</button> 
+    <button id="save">Save / Export as CSV</button>
+    <button id="remove-column">Remove Stage</button>
+    <button id="add-column">Add Stage</button>
+
+    <script src="scripts/script.js"></script> 
+</body>
+</html>
