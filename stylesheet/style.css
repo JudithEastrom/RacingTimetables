@@ -1,23 +1,269 @@
-/* font import*/
+/* practical stuff */
+
+/* optimized for tablet */
+
+@media (max-width: 900px) {
+
+    body {
+        margin: 10px;
+    }
+
+    #racing-timetable {
+        font-size: 14px;
+    }
+
+    button {
+        padding: 10px;
+    }
+
+}
+
+
+/* optimized for mobile */
+
+@media (max-width: 600px) {
+
+    body {
+        margin: 6px;
+    }
+
+    #racing-timetable {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    #racing-timetable th,
+    #racing-timetable td {
+        padding: 4px;
+    }
+
+
+    /* Driver smaller on mobile */
+
+    #racing-timetable th:nth-child(2),
+    #racing-timetable td:nth-child(2),
+    #racing-timetable td:nth-child(2) input {
+        width: 140px;
+    }
+
+
+    /* SS inputs */
+
+    #racing-timetable input[type="text"] {
+        width: 75px;
+    }
+
+
+    /* Position */
+
+    #racing-timetable td:first-child input {
+        width: 35px;
+    }
+
+
+    button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+}
+body, html{
+  height: 100%;
+  width: auto;
+  background-color: #212529;
+}
+body {
+    font-family: Roboto, sans-serif;
+    margin: 20px;
+}
+
+/* fonts */
 
 @font-face {
-    font-family:"AZNUnified-Oblique";
+    font-family: "AZNUnified-Oblique";
     src: url("/assets/fonts/AZNUnified-Oblique-Trial.otf");
-
-}
-body{
-    font-family: Roboto;
 }
 
-/*table */
+/* table*/ 
+
+td{
+  color: white;
+}
+
+#racing-timetable {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+    font-family: "AZNUnified-Oblique";
+}
+
+#racing-timetable th,
+#racing-timetable td {
+    padding: 3px 50px;
+    white-space: nowrap;
+    text-align: left;
+    
+}
+
 #racing-timetable tr:nth-child(even) {
-  background-color: #f2f2f2;
+    background-color: #9b9fa2;
 }
 
 #racing-timetable th {
-  text-align: left;
+    text-align: left;
+    
 }
 
-#racing-timetable td input[type="text"] {
-  width: 100%;
+
+/*inputs*/
+
+#racing-timetable input {
+    box-sizing: border-box;
+    height: 24px;
+    padding: 2px 4px;
+    font-family: Roboto, sans-serif;
+    
+}
+
+
+/* Driver name */
+
+#racing-timetable th:nth-child(2),
+#racing-timetable td:nth-child(2) {
+    width: 90px;
+    
+    
+}
+
+#racing-timetable td:nth-child(2) input {
+    width: 90px;
+    
+}
+
+
+/* SS times */
+
+#racing-timetable input[type="text"] {
+    width: 75px;
+    background-color: #212529;
+    color: white;
+    
+}
+
+
+/* Position */
+
+#racing-timetable th:first-child,
+#racing-timetable td:first-child {
+    width: 35px;
+    min-width: 35px;
+    max-width: 35px;
+    text-align: center;
+    padding: 2px;
+}
+
+
+.position {
+    width: 30px;
+    min-width: 30px;
+    max-width: 30px;
+    padding: 0;
+    text-align: center;
+}
+
+.position-cell {
+    width: 30px;
+    max-width: 30px;
+    padding: 0;
+    text-align: center;
+}
+
+.position {
+    width: 30px;
+    max-width: 30px;
+    padding: 0;
+    text-align: center;
+}
+/* End time */
+
+.end-time {
+    min-width: 90px;
+}
+
+/* hides arrows in position */
+
+input[type="number"] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+    background-color: #212529;
+    color: white;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    background-color: #212529;
+    color: white;
+    margin: 0;
+}
+
+/* now for decoration :) */
+
+thead {
+  background-color: #9b9fa2;
+}
+
+/* hero image (aka the big boi on top of the page lol) */
+
+.hero-image{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/assets/images/assettocorsarally_4703373b.jpg");
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+}
+.hero-text{
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  color:white;
+}
+h1 {
+  font-family: "AZNUnified-Oblique";
+  font-size: 60px;
+  color: white;
+}
+p{
+  font-family: Roboto, sans-serif;
+  font-size:20px;
+  color: #fff300;
+}
+
+/*button styles */
+
+#add-row , #remove-row, #save,#add-column, #remove-column{
+  display: inline-block;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: "AZNUnified-Oblique";
+  color: white;
+  background: linear-gradient(#f1570e,#d53628);
+  transition: 1s;
+  box-shadow: 6px 6px 0 black;
+  transform: skewX(-15deg);
+  border: none;
+  cursor: pointer;
+  margin-top: 50px;
+}
+#add-row , #remove-row, #save,#add-column, #remove-column:focus{
+  outline: none;
+}
+#add-row:hover , #remove-row:hover, #save:hover,#add-column:hover, #remove-column:hover{
+  transition: 0.5s;
+  box-shadow: 10px 10px 0 #0573b1;
 }

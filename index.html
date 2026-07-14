@@ -1,33 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="stylesheet/style.css">
-    <style>@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-</style>
+
     <title>Racing Timetable</title>
 </head>
+
 <body>
-    <table id="racing-timetable"> 
+<header>
+    <div class="hero-image">
+        <div class="hero-text">
+            <h1>Racing Tools</h1>
+            <p>Only timetable available right now</p>
+        </div>
+    </div>
+</header>
+
+<table id="racing-timetable">
+
+    <thead>
         <tr>
+            <th>Position</th>
             <th>Driver</th>
             <th>SS1</th>
-            <th>Position</th>
             <th>End time</th>
         </tr>
-        <tr> 
-            <td><input type="text" id="driver-name" placeholder="Driver Name"></td> 
-           <td><input type="text" class="ss" placeholder="m:ss.mmm"></td>
-            <td><input type="number" id="position" readonly></td>
-            <td class="end-time">0</td>
-        </tr>
-    </table>
-    <button id="add-row">Add Row</button> 
-    <button id="save">Save / Export as CSV</button>
-    <button id="remove-column">Remove Stage</button>
-    <button id="add-column">Add Stage</button>
+    </thead>
 
-    <script src="scripts/script.js"></script> 
+
+    <tbody>
+
+        <tr>
+
+           <td class="position-cell">
+            <input type="number" class="position" readonly>
+            </td>
+
+            <td>
+                <input type="text" class="driver-name" placeholder="Driver Name">
+            </td>
+
+
+            <td>
+                <input type="text" class="ss" placeholder="m:ss.mmm">
+            </td>
+
+
+            <td class="end-time">
+                0:00.000
+            </td>
+
+        </tr>
+
+    </tbody>
+
+</table>
+
+
+
+<div class="buttons">
+
+<button id="add-row">
+Add Driver
+</button>
+
+ <button id="remove-row">
+    Remove Driver
+ </button>
+
+<button id="save">
+Save / Export as CSV
+</button>
+
+<button id="add-column">
+Add Stage
+</button>
+
+<button id="remove-column">
+Remove Stage
+</button>
+
+
+
+
+</div>
+
+
+
+<script src="scripts/script.js"></script>
+
 </body>
+
 </html>
+
+<!--
+To do: 
+
+Input CSV
+Remove Row
+Make top 3 medal colors
+-->

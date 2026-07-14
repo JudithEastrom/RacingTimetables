@@ -1,4 +1,6 @@
-//save as CSV
+
+// Save table as CSV
+
 document.getElementById("save").addEventListener("click", () => {
 
     const table = document.getElementById("racing-timetable");
@@ -38,33 +40,38 @@ document.getElementById("save").addEventListener("click", () => {
 });
 
 
-//add row
+
+// Add row
 document.getElementById("add-row").addEventListener("click", () => {
 
     const table = document.getElementById("racing-timetable");
 
-    const row = table.insertRow();
+    const tbody = table.querySelector("tbody");
 
-    const ssCount = table.rows[0].cells.length - 3;
+    const row = tbody.insertRow();
+
+
+    const ssCount =
+        table.rows[0].cells.length - 3;
+
+
+    // Position
+    row.insertCell().innerHTML =
+        '<input type="number" class="position" readonly>';
 
 
     // Driver
     row.insertCell().innerHTML =
-        '<input type="text">';
+        '<input type="text" class="driver-name" placeholder="Driver Name">';
 
 
-    // SS times
-    for (let i = 0; i < ssCount; i++) {
+    // SS stages
+    for(let i = 0; i < ssCount; i++){
 
         row.insertCell().innerHTML =
             '<input type="text" class="ss" placeholder="m:ss.mmm">';
 
     }
-
-
-    // Position
-    row.insertCell().innerHTML =
-        '<input type="number" readonly>';
 
 
     // End time
@@ -77,9 +84,14 @@ document.getElementById("add-row").addEventListener("click", () => {
 
     attachListeners();
 
+    updatePositions();
+
 });
 
-//add column
+
+
+// Add column
+
 document.getElementById("add-column").addEventListener("click", () => {
 
     const table = document.getElementById("racing-timetable");
@@ -96,7 +108,7 @@ document.getElementById("add-column").addEventListener("click", () => {
 
     header.insertBefore(
         th,
-        header.cells[header.cells.length - 2]
+        header.cells[header.cells.length - 1]
     );
 
 
@@ -123,26 +135,27 @@ document.getElementById("add-column").addEventListener("click", () => {
 });
 
 
-// Removes columns
+
+// Remove column
+
 document.getElementById("remove-column").addEventListener("click", () => {
 
     const table = document.getElementById("racing-timetable");
-
+    const header = table.rows[0];
     const ssColumns =
         table.rows[0].cells.length - 3;
 
 
     if (ssColumns <= 1) {
 
-        alert("There should at least be one SS.");
+        alert("There needs to be at least one SS");
 
         return;
 
     }
 
 
-    const removeIndex =
-        table.rows[0].cells.length - 3;
+    const removeIndex = header.cells.length - 2;
 
 
     for (const row of table.rows) {
@@ -156,8 +169,32 @@ document.getElementById("remove-column").addEventListener("click", () => {
 
 });
 
+// Remove driver
 
-//time conversion
+document.getElementById("remove-row").addEventListener("click", () => {
+
+    const table = document.getElementById("racing-timetable");
+    const tbody = table.querySelector("tbody");
+
+
+    if (tbody.rows.length <= 1) {
+
+        alert("There needs to be at least one row");
+
+        return;
+
+    }
+    tbody.deleteRow(tbody.rows.length - 1);
+
+
+    updateTotals();
+    updatePositions();
+
+});
+
+// Time conversion
+// Format: m:ss.mmm
+
 function timeToMilliseconds(time) {
 
     if (!time) return 0;
@@ -238,7 +275,9 @@ function millisecondsToTime(totalMs) {
 
 
 
-//update end times
+
+// Update end times
+
 function updateTotals() {
 
     const table =
@@ -270,19 +309,25 @@ function updateTotals() {
 
 
 
-// update positions
-function updatePositions() {
+
+// Update positions
+
+function updatePositions(){
 
     const table =
         document.getElementById("racing-timetable");
 
 
+    const tbody =
+        table.querySelector("tbody");
+
+
     const rows =
-        Array.from(table.rows).slice(1);
+        Array.from(tbody.rows);
 
 
 
-    rows.sort((a, b) => {
+    rows.sort((a,b)=>{
 
 
         const timeA =
@@ -303,19 +348,14 @@ function updatePositions() {
 
 
 
-    rows.forEach(row => {
-
-        table.appendChild(row);
-
-    });
+    rows.forEach(row => tbody.appendChild(row));
 
 
 
-    rows.forEach((row, index) => {
+    rows.forEach((row,index)=>{
 
-        row.cells[row.cells.length - 2]
-            .querySelector("input")
-            .value = index + 1;
+        row.querySelector(".position").value =
+            index + 1;
 
     });
 
@@ -323,7 +363,9 @@ function updatePositions() {
 
 
 
-//input listeners
+
+// Input listeners
+
 function attachListeners() {
 
 
@@ -338,14 +380,14 @@ function attachListeners() {
         input.dataset.listener = "true";
 
 
-        // calculate after typing
+        // Bereken tijdens typen
         input.addEventListener(
             "input",
             updateTotals
         );
 
 
-        // sort after typing
+        // Sorteer pas na klaar typen
         input.addEventListener(
             "change",
             () => {
