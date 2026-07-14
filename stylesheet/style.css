@@ -94,7 +94,7 @@ body {
    
 @font-face {
     font-family: "AZNUnified-Oblique";
-    src: url("/assets/fonts/AZNUnified-Oblique-Trial.otf");
+    src: url("assets/fonts/AZNUnified-Oblique-Trial.otf")
 }
 
 
@@ -107,8 +107,7 @@ body {
         rgba(0,0,0,.5),
         rgba(0,0,0,.5)
     ),
-    url("/assets/images/assettocorsarally_4703373b.jpg");
-
+   url("assets/images/assettocorsarally_4703373b.jpg");
     height: 500px;
     background-position: center;
     background-size: cover;
